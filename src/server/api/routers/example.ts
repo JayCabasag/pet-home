@@ -13,4 +13,11 @@ export const exampleRouter = createTRPCRouter({
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.example.findMany();
   }),
+  getAllPets: publicProcedure
+    .input(z.object({text: z.string() }))
+    .query(({}) => {
+      return {
+        results: [{id: 123, name: 'Jay Cabasag'}, {id: 12345, name: 'Jay Cabsag 2'}]
+      }
+    })
 });

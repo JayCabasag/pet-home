@@ -6,6 +6,7 @@ import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const allPets = api.example.getAllPets.useQuery({ text: "Hello" });
 
   return (
     <>
@@ -44,7 +45,7 @@ const Home: NextPage = () => {
             </Link>
           </div>
           <p className="text-2xl text-white">
-            {hello.data ? hello.data.greeting : "Loading tRPC query..."}
+            {allPets.data ? JSON.stringify(allPets.data.results) : 'Please wait...'}
           </p>
         </div>
       </main>
